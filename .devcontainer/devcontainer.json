@@ -4,17 +4,17 @@
   
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
-      "version": "latest",
+      "version": "24.0",
       "moby": true,
       "dockerDashComposeVersion": "v2"
     },
     "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
-      "version": "latest",
-      "helm": "latest",
+      "version": "1.28",
+      "helm": "3.13",
       "minikube": "none"
     },
     "ghcr.io/devcontainers/features/git:1": {
-      "version": "latest"
+      "version": "2.43"
     }
   },
 
@@ -44,10 +44,6 @@
   "postCreateCommand": "npm install --prefix ./app && npm install --prefix ./facilitator",
 
   "remoteUser": "node",
-
-  "mounts": [
-    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
-  ],
 
   "runArgs": [
     "--privileged"
