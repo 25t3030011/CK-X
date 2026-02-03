@@ -1,0 +1,51 @@
+{
+  "name": "CK-X Simulator",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bullseye",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "24.0",
+      "moby": true,
+      "dockerDashComposeVersion": "v2"
+    },
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "version": "1.28",
+      "helm": "3.13",
+      "minikube": "none"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "2.43"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  "forwardPorts": [30080],
+  
+  "portsAttributes": {
+    "30080": {
+      "label": "CK-X Simulator",
+      "onAutoForward": "notify"
+    }
+  },
+
+  "postCreateCommand": "npm install --prefix ./app && npm install --prefix ./facilitator",
+
+  "remoteUser": "node",
+
+  "runArgs": [
+    "--privileged"
+  ]
+}
